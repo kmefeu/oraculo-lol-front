@@ -1,29 +1,27 @@
-import React from 'react';
-import WinRate from "../WinRate/WinRate"
-import MatchCard from "../MatchCard/MatchCard"
-import './MatchHistory.css'
+import React, { useState, useEffect } from "react";
+import WinRate from "../WinRate/WinRate";
+import MatchCard from "../MatchCard/MatchCard";
+import "./MatchHistory.css";
 
-function MatchHistory() {
-    return (
-        <div className="matchContainer">
+function MatchHistory({ summonerData }) {
 
-            <WinRate />
 
-            <div className="matchHistoryContainer">
+  return (
+    <div className="matchContainer">
+      <WinRate winRate={summonerData.winRate} />
+      <div className="matchHistoryContainer">
+        <ul>
 
-                <ul>
-                    
-            
-                <MatchCard />
-                <MatchCard />
-                <MatchCard />
-                
-                
-                </ul>
-
-            </div>
-        </div>
-    );
+          {console.log(summonerData?.matches)}
+          {
+             summonerData.matches.map(( matchData,index) => <MatchCard videoId={index} matchData={matchData} key={index}/>)
+             
+          }
+     
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 export default MatchHistory;

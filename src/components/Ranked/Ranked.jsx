@@ -2,21 +2,21 @@ import Shield from "../../assets/png/Bronze-Rank.png";
 import Shield2 from "../../assets/png/Silver-Rank.png";
 import"./Ranked.css"
 
-function Card() {
+function Ranked({summonerData}) {
   return (
     <div className="rankedContainer">
       <div className="rankedElo">
-        <h2>SOLO/DUO</h2>
-        <h3>Bronze IV</h3>
-        <img src={Shield} />
+        <h2>{summonerData.summoner?.rank[1].queueType.replace(/_/gm," ").replace("RANKED","")}</h2>
+        <h3>{summonerData.summoner?.rank[1].tier +" "+ summonerData.summoner?.rank[1].rank}</h3>
+        <img src={"https://api-lol-pecege.herokuapp.com"+summonerData.summoner?.rank[1].emblem} />
       </div>
 
       <div className="rankedElo">
-        <h2>FLEX 5V5</h2>
-        <h3>Prata III</h3>
-        <img src={Shield2} />
+      <h2>{summonerData.summoner?.rank[0].queueType.replace(/_/gm," ").replace("RANKED","")}</h2>
+        <h3>{summonerData.summoner?.rank[0].tier +" "+ summonerData.summoner?.rank[0].rank}</h3>
+        <img src={"https://api-lol-pecege.herokuapp.com"+summonerData.summoner?.rank[0].emblem} />
       </div>
     </div>
   );
 }
-export default Card;
+export default Ranked;

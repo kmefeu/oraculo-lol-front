@@ -6,28 +6,28 @@ import { ReactComponent as Cardimg } from '../../assets/svg/card.svg';
 import "./Flag.css"
 
 
-function Flag() {
+function Flag({summonerData}) {
 
     return (
         <div className="flagCard">
                 
         <Cardimg className="flag" />
         
-        <h2 className="summonerName">Mefeu</h2>
+        <h2 className="summonerName">{summonerData.summoner?.name}</h2>
         
         <div className="iconContainer">
             
              <div className="icon">
                 <img className="borderLevel-blur" src={Level} />
                 <img className="borderLevel" src={Level} />
-                <img className="summonerIcon" src={Icon} />
+                <img className="summonerIcon" src={"https://api-lol-pecege.herokuapp.com"+summonerData.imageProfile} />
             </div>
             
-            <p className="level">106</p>
+            <p className="level">{summonerData.summoner?.summonerLevel}</p>
         
         </div>
         
-        <img className="flagBorder" src={FlagBorder} />
+        <img className="flagBorder" src={"https://api-lol-pecege.herokuapp.com"+summonerData.summoner?.rank[1].flag} />
         </div>
     );
 }

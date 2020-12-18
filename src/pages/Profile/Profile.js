@@ -8,39 +8,42 @@ import SrcBar from "../../components/SrcBar/SrcBar"
 import Flag from "../../components/Flag/Flag"
 import Ranked from "../../components/Ranked/Ranked"
 import Loading from "../../components/Loading/Loading"
-import Level from "../../assets/svg/Simple-Border.svg";
-import Icon from "../../assets/png/wolf-icon.png";
 
 function Profile({ location }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [summoner, setSummoner] = useState({});
 
-  //   useEffect(()=> {
-  //    loadSummoner(location.state.invocador,setSummoner,setLoading);
-  //  },[loadSummoner]);
+  useEffect(() => {
+    loadSummoner(location.state.summoner, setSummoner, setLoading);
+  }, [loadSummoner]);
+
 
   return (
     <>
       {loading ? (
-       <Loading/>
+        <Loading  summonerData={summoner}/>
       ) : (
           <section className="profileBg">
             <div className="profileContainer">
 
               <header className="profileHeader">
                 <a href="/"><img className="brandHeader" src={Brand} /></a>
-                <div className="profileSrcBar"><SrcBar /></div>
+
+                <div className="profileSrcBar">
+                  <SrcBar />
+                </div>
               </header>
 
               <main className="profileMainContainer">
 
                 <section className="profileLeftColum">
-                  <Flag />
-                  <Ranked />
+                  <Flag summonerData={summoner} />
+                  <Ranked summonerData={summoner} />
                 </section>
 
-
-                <div className="profileMatchHistory"><MatchHistory /></div>
+                <section className="profileMatchHistory">
+                  <MatchHistory summonerData={summoner} />
+                </section>
 
               </main>
             </div>

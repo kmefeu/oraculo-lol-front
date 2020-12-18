@@ -44,8 +44,12 @@
   position: absolute;
   bottom: 0px;
   right: 0px;
-  height: 15px;
+  height: 10px;
   width: 100%;
+  z-index: 1;
+}
+
+.win {
   background-image: linear-gradient(
     270deg,
     #1ba9bd,
@@ -53,7 +57,15 @@
     transparent,
     transparent
   );
-  z-index: 1;
+}
+.lose {
+  background-image: linear-gradient(
+    270deg,
+    #ec2040,
+    #ec203f93,
+    transparent,
+    transparent
+  );
 }
 
 .fadeGradient {
@@ -84,17 +96,29 @@
   transition: 0.5s ease-in-out;
 }
 
-/* .matchCard:hover {
+.matchCard:hover {
   transform: scale(1.02);
 }
 
-.matchCard:hover .matchResultGradient {
+.matchCard:hover .win {
   background-image: linear-gradient(
     270deg,
     transparent,
     #1baabdb7,
     #1ba9bd,
     #1baabdb7,
+    transparent
+  );
+
+  animation: slide 3s linear infinite;
+}
+.matchCard:hover .lose {
+  background-image: linear-gradient(
+    270deg,
+    transparent,
+    #ec203f93,
+    #ec2040,
+    #ec203f93,
     transparent
   );
 
@@ -110,9 +134,5 @@
   }
 }
 .matchCard:hover .fadeGradient {
-  opacity: 0.9;
+  opacity: 0.6;
 }
-
-.matchCard:hover .heroBg {
-  opacity: 1;
-} */

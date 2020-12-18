@@ -2,7 +2,7 @@ import Icon from "../../assets/png/wolf-icon.png";
 import Level from "../../assets/svg/Simple-Border.svg";
 import "./Loading.css";
 
-function Flag() {
+function Flag({summonerData}) {
   return (
     <div className="loadingBg">
       <div className="icon">
